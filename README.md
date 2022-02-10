@@ -9,3 +9,6 @@
 - [Graph_Classification.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/Graph_Classification.ipynb)
 ## SwarmNet implementation:
 - [SwarmNet.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet.ipynb)
+## SwarmNet implementations with Evaluations:
+- [SwarmNet_more_experiments.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_more_experiments.ipynb)
+- [SwarmNet_Edge_Prediction.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_Edge_Prediction.ipynb)
