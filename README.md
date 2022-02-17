@@ -10,5 +10,6 @@
 ## SwarmNet implementation:
 - [SwarmNet.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet.ipynb)
 ## SwarmNet implementations with Evaluations:
-- [SwarmNet_more_experiments.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_more_experiments.ipynb)
+- 2 fish: [SwarmNet_more_experiments.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_more_experiments.ipynb)
+- 4 fish: [SwarmNet_4_fish.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_4_fish.ipynb)
 - [SwarmNet_Edge_Prediction.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_Edge_Prediction.ipynb)
