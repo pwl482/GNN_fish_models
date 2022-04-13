@@ -2,7 +2,10 @@
 ## SwarmNet finalized implementations:
 - [SwarmNet.py](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet.py)
 ## Explorations for edge filtering and edge weight predictions:
+### 2 fish:
 - [SwarmNet_eval_less_connections.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_eval_less_connections.ipynb)
+### 6 fish:
+- [SwarmNet_eval_all_6fish.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_eval_all_6fish.ipynb)
 
 # Old exploratory files:
 ## basic exploration of fish model features:
