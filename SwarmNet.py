@@ -157,14 +157,14 @@ class Edgeweight_SwarmNet(nn.Module):
         views = self.lrelu(self.encoder1(views))
         views = self.lrelu(self.encoder2(views))
         x_new = torch.cat((pose, views.squeeze(1)), dim=1)
-        edge_weights = self.edge_weighter2(self.lrelu(self.edge_weighter1(x_new))).squeeze()
+        edge_weights = torch.mean(self.edge_weighter2(self.lrelu(self.edge_weighter1(x_new[edge_index]))), dim=0).squeeze()
         return edge_weights
 
     def forward(self, pose, views, edge_index):
         views = self.lrelu(self.encoder1(views))
         views = self.lrelu(self.encoder2(views))
         x_new = torch.cat((pose, views.squeeze(1)), dim=1)
-        edge_weights = self.edge_weighter2(self.lrelu(self.edge_weighter1(x_new))).squeeze()
+        edge_weights = torch.mean(self.edge_weighter2(self.lrelu(self.edge_weighter1(x_new[edge_index]))), dim=0).squeeze()
         x = self.lrelu(self.gconv1(x_new, edge_index, torch.flatten(edge_weights)))
         for linear_i in self.linears:
             x = self.dropout(self.lrelu(linear_i(x)))
@@ -178,9 +178,13 @@ class CouzinModel(fish_models.AbstractModel):
         self.model = model
         self.view_width = view_width
         self.chosen_actions = [[] for i in range(max_n_fish)]
+        self.edge_weights = [[] for i in range(max_n_fish)]
     
     def reset_chosen_actions():
         self.chosen_actions = [[] for i in range(max_n_fish)]
+    
+    def reset_edge_weights():
+        self.edge_weights = [[] for i in range(max_n_fish)]
 
     def choose_action(self, poses_3d, self_id):
         speed = 8
@@ -201,4 +205,5 @@ class CouzinModel(fish_models.AbstractModel):
         
         turn = self.model(x_pose, x_view, edge_index).detach().numpy()[self_id].item()
         self.chosen_actions[self_id].append(turn)
+        self.edge_weights[self_id].append(self.model.get_edge_weights(x_pose, x_view, edge_index).detach().numpy())
         return speed, turn
