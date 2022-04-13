@@ -25,5 +25,3 @@
 ## Using Views together with Positions:
 - with original couzin data: [SwarmNet_Positions_plus_Raycasts.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_Positions_plus_Raycasts.ipynb)
 - with Pascals smoother couzin data: [SwarmNet_Positions_plus_Raycasts_smooth_data.ipynb](https://github.com/pwl482/GNN_fish_models/blob/main/SwarmNet_Positions_plus_Raycasts_smooth_data.ipynb)
-## Model evaluations to find original rules:
-- 
