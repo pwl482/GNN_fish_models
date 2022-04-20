@@ -1,3 +1,7 @@
+# Fish Swarm Movement Prediction using GNNs
+This repository was made for the research internship at the Berlin Biorobotics Lab at FU Berlin (October 2021-April 2022).
+It contains multiple jupyter notebooks and a main python file explained below.
+
 # Quickstart Guide
 ## Installation
 Start by setting up a conda virtual environment in the console (tested with python 3.6, but other versions should also be viable):
