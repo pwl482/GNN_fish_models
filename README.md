@@ -24,7 +24,7 @@ pip install fish_models
 pip install robofish-io
 ```
 ## Load a fish_models dataset
-To download a fish_models dataset with 2 fish agents you run in python (more data [here](https://userpage.fu-berlin.de/andigerken/model_server) under raw_data)
+To download a fish_models dataset with 2 fish agents you run in python (more data is available [here](https://userpage.fu-berlin.de/andigerken/model_server) under raw_data):
 ```python
 import fish_models
 data_path = fish_models.raw_data('pascal_vanilla_couzin')
@@ -66,7 +66,7 @@ PATH = f"your_model_name.pth"
 model = Pose_and_View_SwarmNet(pos_channels=3, hidden_channels=128, out_channels=1, 
                                conv_channels=3, conv_width=150, n_linear_layers=4).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
-train_losses, val_losses, epochs = train_SwarmNet(model, optimizer, train_loader_filter, val_loader_filter,
+train_losses, val_losses, epochs = train_SwarmNet(model, optimizer, train_loader, val_loader,
                                                   criterion, epochs=200, device=device)
 save_model(model=model, optimizer=optimizer, epoch=epochs, train_losses=train_losses, val_losses=val_losses, path=PATH)
 ```
