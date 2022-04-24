@@ -38,9 +38,11 @@ data_path = fish_models.raw_data('pascal_vanilla_couzin')
 ```
 Then you import the training and validation set for example with the following commands (choose max_files according to RAM limitations):
 ```python
+VIEW_N_BINS = 150
+
 raycast = fish_models.Raycast(
-            n_fish_bins=150,
-            n_wall_raycasts=150,
+            n_fish_bins=VIEW_N_BINS,
+            n_wall_raycasts=VIEW_N_BINS,
             fov_angle_fish_bins=2*np.pi,
             fov_angle_wall_raycasts=2*np.pi,
             world_bounds=([-50, -50], [50, 50]),
@@ -71,7 +73,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 criterion = nn.MSELoss()
 PATH = f"your_model_name.pth"
 model = Pose_and_View_SwarmNet(pos_channels=3, hidden_channels=128, out_channels=1, 
-                               conv_channels=3, conv_width=150, n_linear_layers=4).to(device)
+                               conv_channels=3, conv_width=VIEW_N_BINS, n_linear_layers=4).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 train_losses, val_losses, epochs = train_SwarmNet(model, optimizer, train_loader, val_loader,
                                                   criterion, epochs=200, device=device)
@@ -83,7 +85,7 @@ Load a model again:
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 PATH = f"your_model_name.pth"
 model = Pose_and_View_SwarmNet(pos_channels=3, hidden_channels=128, out_channels=1, 
-                               conv_channels=3, conv_width=150, n_linear_layers=4).to(device)
+                               conv_channels=3, conv_width=VIEW_N_BINS, n_linear_layers=4).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 prev_epochs, prev_train_losses, prev_val_losses = load_model(model, optimizer, PATH)
 ```
@@ -91,7 +93,7 @@ Predict a track:
 ```python
 model.eval()
 model.to("cpu")
-raymodel = CouzinModel(model=model, raycast=raycast, view_width=150)
+raymodel = CouzinModel(model=model, raycast=raycast, view_width=VIEW_N_BINS)
 generator = fish_models.TrackGenerator([raymodel], world_size=[100,100], frequency=10)
 track = generator.create_track(n_guppies=2, trackset_len=199)
 ```
