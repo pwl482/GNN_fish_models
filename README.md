@@ -23,6 +23,13 @@ pip config set global.extra-index-url https://git.imp.fu-berlin.de/api/v4/projec
 pip install fish_models
 pip install robofish-io
 ```
+If the installation of fish_models does not work this way, you could also try cloning the corresponding git repository:
+```console
+pip config set global.extra-index-url https://git.imp.fu-berlin.de/api/v4/projects/6392/packages/pypi/simple
+git clone https://git.imp.fu-berlin.de/bioroboticslab/robofish/fish_models.git
+cd fish_models
+pip install -e .
+```
 ## Load a fish_models dataset
 To download a fish_models dataset with 2 fish agents you run in python (more data is available [here](https://userpage.fu-berlin.de/andigerken/model_server) under raw_data):
 ```python
